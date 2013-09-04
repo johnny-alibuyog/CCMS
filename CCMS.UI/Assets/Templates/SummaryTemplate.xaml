@@ -1,0 +1,70 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <DataTemplate x:Key="SummaryTemplate">
+
+        <StackPanel>
+            <Grid Margin="6,2">
+                <Grid.Resources>
+                    <Style TargetType="{x:Type Label}">
+                        <Setter Property="Margin" Value="0,0,0,0" />
+                        <Setter Property="Padding" Value="0,0,0,0" />
+                    </Style>
+                </Grid.Resources>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0">Previous Balance</Label>
+                <Label Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right">[+]</Label>
+                <Label Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" 
+                   Content="{Binding Path=PreviousBalance}"></Label>
+
+                <Label Grid.Row="1" Grid.Column="0">Purchase/Installments</Label>
+                <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right">[+]</Label>
+                <Label Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" 
+                   Content="{Binding Path=PurchaseInstallments}"></Label>
+
+                <Label Grid.Row="2" Grid.Column="0">Cash Advance</Label>
+                <Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right">[+]</Label>
+                <Label Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right" 
+                   Content="{Binding Path=CashAdvance}"></Label>
+
+                <Label Grid.Row="3" Grid.Column="0">Payments/Credits</Label>
+                <Label Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right">[-]</Label>
+                <Label Grid.Row="3" Grid.Column="2" HorizontalAlignment="Right" 
+                   Content="{Binding Path=PaymentsCredits}"></Label>
+
+                <Label Grid.Row="4" Grid.Column="0">Interests/Fees/Charges</Label>
+                <Label Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right">[+]</Label>
+                <Label Grid.Row="4" Grid.Column="2" HorizontalAlignment="Right" 
+                   Content="{Binding Path=InterestsFeesCharges}"></Label>
+
+                <Label Grid.Row="5" Grid.Column="0">Total Amount Due</Label>
+                <Label Grid.Row="5" Grid.Column="1" HorizontalAlignment="Right">[=]</Label>
+                <Label Grid.Row="5" Grid.Column="2" HorizontalAlignment="Right" 
+                   Content="{Binding Path=TotalAmountDue}"></Label>
+
+                <Label Grid.Row="6" Grid.Column="0">Statement Period</Label>
+                <Label Grid.Row="6" Grid.Column="1" HorizontalAlignment="Right">[=]</Label>
+                <Label Grid.Row="6" Grid.Column="2" HorizontalAlignment="Right" 
+                   Content="{Binding Path=StatementPeriod}"></Label>
+            </Grid>
+        </StackPanel>
+        
+    </DataTemplate>
+
+</ResourceDictionary>

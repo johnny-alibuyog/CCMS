@@ -1,0 +1,117 @@
+﻿<Window x:Class="CCMS.UI.Features.CreditCardProviders.ProviderView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        Title="Installment List" Height="350" MinWidth="500" 
+        Style="{StaticResource ChildWindowStyle}"
+        WindowStartupLocation="CenterOwner">
+
+    <HeaderedContentControl Style="{StaticResource SectionStyle}" Header="Provider">
+        <DockPanel Margin="5">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Right">
+                <!-- submit buttons section -->
+                <xctk:DropDownButton Style="{StaticResource SubmitButtonStyle}" Content="Create">
+                    <xctk:DropDownButton.DropDownContent>
+                        <Menu KeyboardNavigation.TabNavigation="Cycle">
+                            <Menu.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel Orientation="Vertical" />
+                                </ItemsPanelTemplate>
+                            </Menu.ItemsPanel>
+                            <MenuItem Header="Finance Charge Setting" Command="{Binding Path=CreateFinnanceChargeSetting}"></MenuItem>
+                            <MenuItem Header="Interest Setting" Command="{Binding Path=CreateInterestSetting}"></MenuItem>
+                            <MenuItem Header="Late Charge Setting" Command="{Binding Path=CreateLateChargeSetting}"></MenuItem>
+                            <MenuItem Header="Minimum Payment Setting" Command="{Binding Path=CreateMinimumPaymentSetting}"></MenuItem>
+                            <MenuItem Header="Overlimit Fee Setting" Command="{Binding Path=CreateOverlimitFeeSetting}"></MenuItem>
+                            <MenuItem Header="Service Fee Setting" Command="{Binding Path=CreateServiceFeeSetting}"></MenuItem>
+                        </Menu>
+                    </xctk:DropDownButton.DropDownContent>
+                </xctk:DropDownButton>
+                <Button Style="{StaticResource SubmitButtonStyle}" IsDefault="True" Command="{Binding Path=Save}">Save</Button>
+                <Button Style="{StaticResource SubmitButtonStyle}" IsCancel="True" Click="Button_Click">Close</Button>
+            </StackPanel>
+
+            <!-- field section -->
+            <Grid DockPanel.Dock="Top" Margin="12,12">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- left side -->
+                <Label Style="{StaticResource LabelStyle}" Grid.Row="0" Grid.Column="0" Content="Id:" />
+                <TextBox Style="{StaticResource FieldStyle}" Grid.Row="0" Grid.Column="1" IsReadOnly="{Binding Path=IsEditMode}"
+                    Text="{Binding Path=Id, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
+
+                <Label Style="{StaticResource LabelStyle}" Grid.Row="1" Grid.Column="0" Content="Name:" />
+                <TextBox Style="{StaticResource FieldStyle}" Grid.Row="1" Grid.Column="1" 
+                    Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
+
+                <Label Style="{StaticResource LabelStyle}" Grid.Row="2" Grid.Column="0" Content="InterestRate:" />
+                <TextBox Style="{StaticResource FieldStyle}" Grid.Row="2" Grid.Column="1" 
+                    Text="{Binding Path=InterestRate, StringFormat={}{0:N5}, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, ValidatesOnDataErrors=True}" TextAlignment="Right"/>
+
+            </Grid>
+
+            <!-- list section -->
+            <ListView 
+                AlternationCount="2"
+                SelectionMode="Single"
+                ItemsSource="{Binding Path=ComputationSettings}"
+                SelectedItem="{Binding Path=SelectedComputationSetting, Mode=TwoWay}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Action">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ContentControl>
+                                        <TextBlock>
+                                            <!--<Hyperlink Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.Delete}" CommandParameter="{Binding Path=Id}">Delete</Hyperlink>-->
+                                            <Hyperlink 
+                                                Command="{Binding Path=DataContext.EditComputationSetting, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" 
+                                                CommandParameter="{Binding}">
+                                                <TextBlock>Edit</TextBlock>
+                                            </Hyperlink>
+                                            <Hyperlink 
+                                                Command="{Binding Path=DataContext.DeleteComputationSetting, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" 
+                                                CommandParameter="{Binding}">
+                                                <TextBlock>Delete</TextBlock>
+                                            </Hyperlink>
+                                        </TextBlock>
+                                    </ContentControl>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Details" DisplayMemberBinding="{Binding Path=Details}"/>
+                        <GridViewColumn Header="Currency" DisplayMemberBinding="{Binding Path=MinimumAmountCurrency.Value}"/>
+                        <GridViewColumn Header="Minimum Amount">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ContentPresenter 
+                                        Content="{Binding Path=MinimumAmountValue}" 
+                                        HorizontalAlignment="Right"
+                                        ContentStringFormat="{}{0:N2}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Rate">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ContentPresenter 
+                                        Content="{Binding Path=Rate}" 
+                                        HorizontalAlignment="Right"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </DockPanel>
+    </HeaderedContentControl>
+</Window>

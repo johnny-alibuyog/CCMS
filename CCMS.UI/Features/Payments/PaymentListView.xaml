@@ -1,0 +1,50 @@
+﻿<Window x:Class="CCMS.UI.Features.Payments.PaymentListView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Payment List" MinWidth="600" Height="400" Width="600"
+        Style="{StaticResource ChildWindowStyle}"
+        WindowStartupLocation="CenterOwner">
+    
+    <HeaderedContentControl Style="{StaticResource SectionStyle}" Header="Payment List">
+        <DockPanel Margin="5">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Right">
+                <Button Style="{StaticResource SubmitButtonStyle}" IsDefault="True" Command="{Binding Path=Create}">Create</Button>
+                <Button Style="{StaticResource SubmitButtonStyle}" IsCancel="True">Close</Button>
+            </StackPanel>
+
+            <ListView 
+                AlternationCount="2"
+                SelectionMode="Single"
+                ItemsSource="{Binding Path=Items}"
+                SelectedItem="{Binding Path=SelectedItem, Mode=TwoWay}">
+                <ListView.View>
+                    <GridView>
+                        <!--<GridViewColumn Header="Action">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ContentControl>
+                                        <TextBlock>
+                                            <Hyperlink Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.Delete}" CommandParameter="{Binding Path=Id}">Delete</Hyperlink>
+                                        </TextBlock>
+                                    </ContentControl>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>-->
+                        <GridViewColumn Header="Classification" DisplayMemberBinding="{Binding Path=TransactionClassification.Value}"/>
+                        <GridViewColumn Header="Assigned To" DisplayMemberBinding="{Binding Path=Staff.Value}"/>
+                        <GridViewColumn Header="Payment Date" DisplayMemberBinding="{Binding Path=DateDisplay}"/>
+                        <GridViewColumn Header="Payment Amount">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ContentPresenter 
+                                    Content="{Binding Path=AmountDisplay}" 
+                                    HorizontalAlignment="Right"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </DockPanel>
+    </HeaderedContentControl>
+</Window>

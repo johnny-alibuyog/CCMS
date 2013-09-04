@@ -1,0 +1,124 @@
+﻿<Window x:Class="CCMS.UI.Features.Billings.BillingView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        Title="Installment List" Height="500" MinWidth="500" 
+        Style="{StaticResource ChildWindowStyle}"
+        WindowStartupLocation="CenterOwner">
+
+    <HeaderedContentControl Style="{StaticResource SectionStyle}" Header="Billing">
+        <DockPanel Margin="5">
+            <!-- submit button section -->
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Right">
+                <xctk:DropDownButton Style="{StaticResource SubmitButtonStyle}" Content="Create">
+                    <xctk:DropDownButton.DropDownContent>
+                        <Menu KeyboardNavigation.TabNavigation="Cycle">
+                            <Menu.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel Orientation="Vertical" />
+                                </ItemsPanelTemplate>
+                            </Menu.ItemsPanel>
+                            <MenuItem Header="Adjustment" Command="{Binding Path=CreateAdjustment}"></MenuItem>
+                            <MenuItem Header="Interest" Command="{Binding Path=CreateInterest}"></MenuItem>
+                            <MenuItem Header="Charge" Command="{Binding Path=CreateCharge}"></MenuItem>
+                            <MenuItem Header="Fee" Command="{Binding Path=CreateFee}"></MenuItem>
+                        </Menu>
+                    </xctk:DropDownButton.DropDownContent>
+                </xctk:DropDownButton>
+                <Button Style="{StaticResource SubmitButtonStyle}" IsDefault="True" Command="{Binding Path=Save}">Save</Button>
+                <Button Style="{StaticResource SubmitButtonStyle}" IsCancel="True">Close</Button>
+            </StackPanel>
+
+            <!-- field section -->
+            <Grid DockPanel.Dock="Top" Margin="12,12">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- left side -->
+                <Label Style="{StaticResource LabelStyle}" Grid.Row="0" Grid.Column="0" Content="Start Date:" />
+                <DatePicker Style="{StaticResource FieldStyle}" Grid.Row="0" Grid.Column="1" 
+                    Text="{Binding Path=StartDate, StringFormat={}{0:yyyy-MM-dd}, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
+
+                <Label Style="{StaticResource LabelStyle}" Grid.Row="1" Grid.Column="0" Content="End Date:" />
+                <DatePicker Style="{StaticResource FieldStyle}" Grid.Row="1" Grid.Column="1" 
+                    Text="{Binding Path=EndDate, StringFormat={}{0:yyyy-MM-dd}, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
+
+                <Label Style="{StaticResource LabelStyle}" Grid.Row="2" Grid.Column="0" Content="Statment Date:" />
+                <DatePicker Style="{StaticResource FieldStyle}" Grid.Row="2" Grid.Column="1" 
+                    Text="{Binding Path=StatementDate, StringFormat={}{0:yyyy-MM-dd}, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
+
+                <Label Style="{StaticResource LabelStyle}" Grid.Row="3" Grid.Column="0" Content="Due Date:" />
+                <DatePicker Style="{StaticResource FieldStyle}" Grid.Row="3" Grid.Column="1" 
+                    Text="{Binding Path=DueDate, StringFormat={}{0:yyyy-MM-dd}, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
+
+                <!-- right side -->
+                <Label Style="{StaticResource LabelStyle}" Grid.Row="0" Grid.Column="3" Content="Billing Amount:" />
+                <Label Style="{StaticResource LabelStyle}" Grid.Row="0" Grid.Column="4" HorizontalContentAlignment="Right"
+                       Content="{Binding Path=BillingAmountDisplay}" />
+
+                <Label Style="{StaticResource LabelStyle}" Grid.Row="1" Grid.Column="3" Content="Payment Amount:" />
+                <Label Style="{StaticResource LabelStyle}" Grid.Row="1" Grid.Column="4" HorizontalContentAlignment="Right"
+                       Content="{Binding Path=PaymentAmountDisplay}" />
+
+                <Label Style="{StaticResource LabelStyle}" Grid.Row="2" Grid.Column="3" Content="Statement Balance:" />
+                <Label Style="{StaticResource LabelStyle}" Grid.Row="2" Grid.Column="4" HorizontalContentAlignment="Right"
+                       Content="{Binding Path=StatementBalanceDisplay}" />
+
+            </Grid>
+
+            <!-- list section -->
+            <ListView 
+                AlternationCount="2"
+                SelectionMode="Single"
+                ItemsSource="{Binding Path=Items}"
+                SelectedItem="{Binding Path=SelectedItem, Mode=TwoWay}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Action">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ContentControl>
+                                        <TextBlock>
+                                            <!--<Hyperlink Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.Delete}" CommandParameter="{Binding Path=Id}">Delete</Hyperlink>-->
+                                            <Hyperlink 
+                                                Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.Delete}" 
+                                                CommandParameter="{Binding}">
+                                                <TextBlock>Delete</TextBlock>
+                                            </Hyperlink>
+                                        </TextBlock>
+                                    </ContentControl>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Path=Date, StringFormat={}{0:yyyy-MM-dd}}"/>
+                        <GridViewColumn Header="Type" DisplayMemberBinding="{Binding Path=Type}"/>
+                        <GridViewColumn Header="Details" DisplayMemberBinding="{Binding Path=Details}"/>
+                        <GridViewColumn Header="Amount">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ContentPresenter 
+                                        Content="{Binding Path=AmountDisplay}" 
+                                        HorizontalAlignment="Right"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </DockPanel>
+    </HeaderedContentControl>
+</Window>

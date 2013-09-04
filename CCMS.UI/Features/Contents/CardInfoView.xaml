@@ -1,0 +1,106 @@
+﻿<UserControl x:Class="CCMS.UI.Features.Contents.CardInfoView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:vm="clr-namespace:CCMS.UI.Features.Contents">
+
+    <!--<UserControl.Resources>
+        <vm:CardInfoViewModel x:Key="viewModel"
+            AccountNumber="343g5446777"
+            AccountName="Johnny Alibuyog"
+            Provider="HSBC"
+            CutOff="10"
+            InterestRate="3"
+            CashAdvanceLimit="10000"
+            CreditLimit="100000"
+            NextCutOffDate="01/01/2012">
+        </vm:CardInfoViewModel>
+    </UserControl.Resources>-->
+    
+    <HeaderedContentControl Style="{StaticResource SectionStyle}" Header="Card Infomation">
+
+        <StackPanel Height="Auto" Width="Auto" Orientation="Horizontal" Margin="6,2">
+            <!--<StackPanel.Resources>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Margin" Value="1" />
+                    <Setter Property="Padding" Value="1" />
+                </Style>
+            </StackPanel.Resources>-->
+
+            <!-- left side -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Style="{StaticResource LabelStyle}" Grid.Row="0" Grid.Column="0" Content="Account Number:" />
+                <Label Style="{StaticResource FieldStyle}" Grid.Row="0" Grid.Column="1" Content="{Binding Path=AccountNumber}" />
+
+                <Label Style="{StaticResource LabelStyle}" Grid.Row="1" Grid.Column="0" Content="Account Name:" />
+                <Label Style="{StaticResource FieldStyle}" Grid.Row="1" Grid.Column="1" Content="{Binding Path=AccountName}" />
+
+                <Label Style="{StaticResource LabelStyle}" Grid.Row="2" Grid.Column="0" Content="Provider:" />
+                <Label Style="{StaticResource FieldStyle}" Grid.Row="2" Grid.Column="1" Content="{Binding Path=Provider}" />
+
+                <Label Style="{StaticResource LabelStyle}" Grid.Row="3" Grid.Column="0" Content="Issue Date:" />
+                <Label Style="{StaticResource FieldStyle}" Grid.Row="3" Grid.Column="1" Content="{Binding Path=IssueDate}" ContentStringFormat="{}{0:yyyy-MM-dd}" />
+
+                <Label Style="{StaticResource LabelStyle}" Grid.Row="4" Grid.Column="0" Content="Expiry Date:" />
+                <Label Style="{StaticResource FieldStyle}" Grid.Row="4" Grid.Column="1" Content="{Binding Path=ExpiryDate}" ContentStringFormat="{}{0:yyyy-MM-dd}" />
+
+                <Label Style="{StaticResource LabelStyle}" Grid.Row="5" Grid.Column="0" Content="Next Cut-off Date:" />
+                <Label Style="{StaticResource FieldStyle}" Grid.Row="5" Grid.Column="1" Content="{Binding Path=NextCutOffDate}" ContentStringFormat="{}{0:yyyy-MM-dd}" />
+            </Grid>
+            
+            <!-- space between -->
+            <Grid Margin="22"></Grid>
+
+            <!-- left side -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Style="{StaticResource LabelStyle}" Grid.Row="0" Grid.Column="0" Content="Cut-off:" />
+                <Label Style="{StaticResource FieldStyle}" Grid.Row="0" Grid.Column="1" Content="{Binding Path=CutOff}" HorizontalContentAlignment="Right"/>
+                
+                <Label Style="{StaticResource LabelStyle}" Grid.Row="1" Grid.Column="0" Content="Interest Rate:" />
+                <Label Style="{StaticResource FieldStyle}" Grid.Row="1" Grid.Column="1" Content="{Binding Path=InterestRate}" ContentStringFormat="{}{0:N2}" HorizontalContentAlignment="Right"/>
+
+                <Label Style="{StaticResource LabelStyle}" Grid.Row="2" Grid.Column="0" Content="Credit Limit:" />
+                <Label Style="{StaticResource FieldStyle}" Grid.Row="2" Grid.Column="1" Content="{Binding Path=CreditLimit}" HorizontalContentAlignment="Right"/>
+
+                <Label Style="{StaticResource LabelStyle}" Grid.Row="3" Grid.Column="0" Content="Cash Advance Limit:" />
+                <Label Style="{StaticResource FieldStyle}" Grid.Row="3" Grid.Column="1" Content="{Binding Path=CashAdvanceLimit}" HorizontalContentAlignment="Right"/>
+
+                <Label Style="{StaticResource LabelStyle}" Grid.Row="4" Grid.Column="0" Content="Outstanding Balance:" />
+                <Label Style="{StaticResource FieldStyle}" Grid.Row="4" Grid.Column="1" Content="{Binding Path=OutstandingBalance}" HorizontalContentAlignment="Right"/>
+
+                <Label Style="{StaticResource LabelStyle}" Grid.Row="5" Grid.Column="0" Content="Available Credit:" />
+                <Label Style="{StaticResource FieldStyle}" Grid.Row="5" Grid.Column="1" Content="{Binding Path=AvailableCredit}" HorizontalContentAlignment="Right"/>
+
+            </Grid>
+        </StackPanel>
+    </HeaderedContentControl>
+</UserControl>

@@ -1,0 +1,23 @@
+reports
+
+1. statement summary report
+	- provider
+	- currency
+	- account name (not final)
+	- account number
+	- previous balance
+	- payments/credits
+	- purchases/installments
+	- interests/fees/charges
+	- adjustments
+	- statement date
+	- due date
+	- total amount due
+
+2. incomming statement summary report
+	- provider
+	- currency
+	- account name (not final)
+	- account number
+	- expected due date
+	- expected balance

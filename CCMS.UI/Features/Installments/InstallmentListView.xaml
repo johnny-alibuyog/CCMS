@@ -1,0 +1,97 @@
+﻿<Window x:Class="CCMS.UI.Features.Installments.InstallmentListView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Installment List" Height="400" MinWidth="600" 
+        Style="{StaticResource ChildWindowStyle}"
+        WindowStartupLocation="CenterOwner">
+    
+    <HeaderedContentControl Style="{StaticResource SectionStyle}" Header="Installment List">
+        <DockPanel Margin="5">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Right">
+                <Button Style="{StaticResource SubmitButtonStyle}" Command="{Binding Path=Create}">Create</Button>
+                <!--<Button Style="{StaticResource SubmitButtonStyle}" Command="{Binding Path=Delete}">Delete</Button>-->
+                <Button Style="{StaticResource SubmitButtonStyle}" IsCancel="True">Close</Button>
+            </StackPanel>
+
+            <ListView 
+            AlternationCount="2"
+            SelectionMode="Single"
+            ItemsSource="{Binding Path=Items}"
+            SelectedItem="{Binding Path=SelectedItem, Mode=TwoWay}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Action">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ContentControl>
+                                        <TextBlock>
+                                            <Hyperlink Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.Delete}" CommandParameter="{Binding Path=Id}">Delete</Hyperlink>
+                                        </TextBlock>
+                                    </ContentControl>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Path=Date, StringFormat={}{0:yyyy-MM-dd}}"/>
+                        <GridViewColumn Header="Details" DisplayMemberBinding="{Binding Path=Details}"/>
+                        <GridViewColumn Header="Classification" DisplayMemberBinding="{Binding Path=TransactionClassification.Value}"/>
+                        <GridViewColumn Header="Assigned To" DisplayMemberBinding="{Binding Path=Staff.Value}"/>
+                        <GridViewColumn Header="Terms">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ContentPresenter 
+                                    Content="{Binding Path=Terms}" 
+                                    HorizontalAlignment="Right"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Rate">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ContentPresenter 
+                                    Content="{Binding Path=InterestRate}" 
+                                    HorizontalAlignment="Right"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Interest">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ContentPresenter 
+                                    Content="{Binding Path=InterestDisplay}" 
+                                    HorizontalAlignment="Right"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Amortization">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ContentPresenter 
+                                    Content="{Binding Path=AmortizationDisplay}" 
+                                    HorizontalAlignment="Right"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Amount">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ContentPresenter 
+                                    Content="{Binding Path=AmountDisplay}" 
+                                    HorizontalAlignment="Right"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Balance">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ContentPresenter 
+                                    Content="{Binding Path=BalanceDisplay}" 
+                                    HorizontalAlignment="Right"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </DockPanel>
+    </HeaderedContentControl>
+</Window>

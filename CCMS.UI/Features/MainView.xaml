@@ -1,0 +1,87 @@
+﻿<Window x:Class="CCMS.UI.Features.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ViewModels="clr-namespace:CCMS.UI.Features"
+        xmlns:Content="clr-namespace:CCMS.UI.Features.Contents"
+        xmlns:Navigation="clr-namespace:CCMS.UI.Features.Navigations"
+        xmlns:Summary="clr-namespace:CCMS.UI.Features.Summaries"
+        xmlns:common="clr-namespace:CCMS.UI.Common"
+        Title="Credit Card Management System"
+        Style="{StaticResource MainWindowStyle}"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Normal">
+
+    <!--
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Assets/Templates/ContentTemplate.xaml" />
+                <ResourceDictionary Source="/Assets/Templates/NavigationTemplate.xaml" />
+                <ResourceDictionary Source="/Assets/Templates/SummaryTemplate.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    -->
+
+    <DockPanel>
+        <DockPanel DockPanel.Dock="Top" KeyboardNavigation.TabNavigation="None">
+            <Menu KeyboardNavigation.TabNavigation="Cycle" common:MenuHelper.MenuPlacement="Bottom">
+                <MenuItem Header="_Transactions" ItemsSource="{Binding Menu.Transactions}" >
+                    <MenuItem.ItemContainerStyle>
+                        <Style TargetType="MenuItem">
+                            <Setter Property="Header" Value="{Binding Text}" />
+                            <Setter Property="Command" Value="{Binding Command}" />
+                        </Style>
+                    </MenuItem.ItemContainerStyle>
+                </MenuItem>
+                <MenuItem Header="_Maintenance" ItemsSource="{Binding Menu.Maintenance}">
+                    <MenuItem.ItemContainerStyle>
+                        <Style TargetType="MenuItem">
+                            <Setter Property="Header" Value="{Binding Text}" />
+                            <Setter Property="Command" Value="{Binding Command}" />
+                        </Style>
+                    </MenuItem.ItemContainerStyle>
+                </MenuItem>
+                <MenuItem Header="_Reports" ItemsSource="{Binding Menu.Reports}">
+                    <MenuItem.ItemContainerStyle>
+                        <Style TargetType="MenuItem">
+                            <Setter Property="Header" Value="{Binding Text}" />
+                            <Setter Property="Command" Value="{Binding Command}" />
+                        </Style>
+                    </MenuItem.ItemContainerStyle>
+                </MenuItem>                
+                <MenuItem Header="_Help" />
+                <MenuItem Header="E_xit" Command="{Binding Path=CloseCommand}" />
+            </Menu>
+        </DockPanel>
+
+        <Grid Margin="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="4" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- navigation region -->
+            <Border Grid.Column="0" Style="{StaticResource MainBorderStyle}">
+                <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="Auto">
+                    <!-- summary section -->
+                    <HeaderedContentControl Style="{StaticResource SectionStyle}" Header="Summary" DockPanel.Dock="Bottom">
+                        <Summary:SummaryView DataContext="{Binding Summary}"/>
+                    </HeaderedContentControl>
+
+                    <!-- navigation section -->
+                    <HeaderedContentControl Style="{StaticResource SectionStyle}" Header="Credit Cards" Height="Auto">
+                        <Navigation:NavigationView DataContext="{Binding Navigation}"/>
+                    </HeaderedContentControl>
+                </DockPanel>
+            </Border>
+
+            <!-- content region -->
+            <Border Grid.Column="2" Style="{StaticResource MainBorderStyle}">
+                <Content:ContentView DataContext="{Binding Content}"/>
+            </Border>
+        </Grid>
+    </DockPanel>
+</Window>

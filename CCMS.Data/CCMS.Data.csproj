@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F9703240-163C-4CA4-9679-E348688DE300}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CCMS.Data</RootNamespace>
+    <AssemblyName>CCMS.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\packages\FluentNHibernate.1.3.0.733\lib\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\packages\Iesi.Collections.3.2.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\packages\NHibernate.3.3.3.4001\lib\Net35\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Caches.SysCache2, Version=3.1.0.4000, Culture=neutral, PublicKeyToken=6876f2ea66c9f443, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NHibernate.Caches\NHibernate.Caches.SysCache2.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Validator">
+      <HintPath>..\packages\NHibernate.Validator.1.3.2.4000\lib\Net35\NHibernate.Validator.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Validator.Specific">
+      <HintPath>..\packages\NHibernate.Validator.1.3.2.4000\lib\Net35\NHibernate.Validator.Specific.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\Exceptions\BusinessExceptionBuilder.cs" />
+    <Compile Include="Common\Exceptions\IExceptionBuilder.cs" />
+    <Compile Include="Common\Exceptions\IInvaildValueMessageBuilder.cs" />
+    <Compile Include="Common\Exceptions\InvalidValueMessageBuilder.cs" />
+    <Compile Include="Configurations\AuditResolver.cs">
+      <DependentUpon>EventListenerConfiguration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Configurations\ConventionMessageInterpolator.cs">
+      <DependentUpon>ValidatorConfiguration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Configurations\EventListenerConfiguration.cs" />
+    <Compile Include="Configurations\AuditEventListener.cs">
+      <DependentUpon>EventListenerConfiguration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Configurations\CacheConfiguration.cs" />
+    <Compile Include="Configurations\IndexForeignKeyConfiguration.cs" />
+    <Compile Include="Configurations\SchemaConfiguration.cs" />
+    <Compile Include="Configurations\SessionContextConfiguration.cs" />
+    <Compile Include="Configurations\ValidatedSharedEngineProvider.cs">
+      <DependentUpon>ValidatorConfiguration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Configurations\ValidationEventListener.cs">
+      <DependentUpon>EventListenerConfiguration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Configurations\ValidatorConfiguration.cs" />
+    <Compile Include="Conventions\BinaryColumnLengthConvention.cs" />
+    <Compile Include="Conventions\CustomComponentConvention.cs" />
+    <Compile Include="Conventions\CustomForeignKeyConvention.cs" />
+    <Compile Include="Conventions\CustomHasManyConvention.cs" />
+    <Compile Include="Conventions\CustomPrimaryKeyNameConvention.cs" />
+    <Compile Include="Conventions\CustomPropertyAccessConvention.cs" />
+    <Compile Include="Conventions\CustomTableNameConvention.cs" />
+    <Compile Include="Conventions\EnumConvention.cs" />
+    <Compile Include="Conventions\_CustomJoinedSubclassConvention.cs" />
+    <Compile Include="EntityDefinitions\MinimumPaymentSettingMapping.cs">
+      <DependentUpon>ComputationSettingMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDefinitions\MinimumPaymentSettingValidation.cs">
+      <DependentUpon>ComputationSettingValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDefinitions\StaffMapping.cs" />
+    <Compile Include="EntityDefinitions\StaffValidation.cs" />
+    <Compile Include="EntityDefinitions\TransactionClassificationMapping.cs" />
+    <Compile Include="EntityDefinitions\TransactionClassificationValidation.cs" />
+    <Compile Include="ISessionProvider.cs" />
+    <Compile Include="EntityDefinitions\AdjustmentBillingItemMapping.cs">
+      <DependentUpon>BillingItemMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDefinitions\AdjustmentMapping.cs" />
+    <Compile Include="EntityDefinitions\AuditMapping.cs" />
+    <Compile Include="EntityDefinitions\BillingItemMapping.cs" />
+    <Compile Include="EntityDefinitions\BillingMapping.cs" />
+    <Compile Include="EntityDefinitions\CashAdvanceMapping.cs" />
+    <Compile Include="EntityDefinitions\CashAdvanceBillingItemMapping.cs">
+      <DependentUpon>BillingItemMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDefinitions\ChargeBillingItemMapping.cs">
+      <DependentUpon>BillingItemMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDefinitions\ComputationSettingMapping.cs" />
+    <Compile Include="EntityDefinitions\CurrencyMapping.cs" />
+    <Compile Include="EntityDefinitions\FeeBillingItemMapping.cs">
+      <DependentUpon>BillingItemMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDefinitions\FinanceChargeSettingMapping.cs">
+      <DependentUpon>ComputationSettingMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDefinitions\InstallmentBillingItemMapping.cs">
+      <DependentUpon>BillingItemMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDefinitions\InstallmentMapping.cs" />
+    <Compile Include="EntityDefinitions\InterestBillingItemMapping.cs">
+      <DependentUpon>BillingItemMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDefinitions\InterestSettingMapping.cs">
+      <DependentUpon>ComputationSettingMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDefinitions\LateChargeSettingMapping.cs">
+      <DependentUpon>ComputationSettingMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDefinitions\MoneyMapping.cs" />
+    <Compile Include="EntityDefinitions\OverlimitFeeSettingMapping.cs">
+      <DependentUpon>ComputationSettingMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDefinitions\PurchaseBillingItemMapping.cs">
+      <DependentUpon>BillingItemMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDefinitions\ServiceFeeSettingMapping.cs">
+      <DependentUpon>ComputationSettingMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDefinitions\UserMapping.cs" />
+    <Compile Include="SessionProvider.cs" />
+    <Compile Include="EntityDefinitions\CreditCardProviderMapping.cs" />
+    <Compile Include="EntityDefinitions\CreditCardMapping.cs" />
+    <Compile Include="EntityDefinitions\PaymentMapping.cs" />
+    <Compile Include="EntityDefinitions\PersonMapping.cs" />
+    <Compile Include="EntityDefinitions\PurchaseMapping.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="EntityDefinitions\AdjustmentBillingItemValidation.cs">
+      <DependentUpon>BillingItemValidaiton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDefinitions\AdjustmentValidaiton.cs" />
+    <Compile Include="EntityDefinitions\AuditValidation.cs" />
+    <Compile Include="EntityDefinitions\BillingItemValidaiton.cs" />
+    <Compile Include="EntityDefinitions\BillingValidation.cs" />
+    <Compile Include="EntityDefinitions\CashAdvanceValidation.cs" />
+    <Compile Include="EntityDefinitions\CashAdvanceBillingItemValidation.cs">
+      <DependentUpon>BillingItemValidaiton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDefinitions\ChargeBillingItemValidation.cs">
+      <DependentUpon>BillingItemValidaiton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDefinitions\ComputationSettingValidation.cs" />
+    <Compile Include="EntityDefinitions\CreditCardProviderValidation.cs" />
+    <Compile Include="EntityDefinitions\CreditCardValidation.cs" />
+    <Compile Include="EntityDefinitions\CurrencyValidtion.cs" />
+    <Compile Include="EntityDefinitions\FeeBillingItemValidation.cs">
+      <DependentUpon>BillingItemValidaiton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDefinitions\FinanceChargeSettingValidation.cs">
+      <DependentUpon>ComputationSettingValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDefinitions\InstallmentBillingItemValidation.cs">
+      <DependentUpon>BillingItemValidaiton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDefinitions\InstallmentValidation.cs" />
+    <Compile Include="EntityDefinitions\InterestBillingItemValidation.cs">
+      <DependentUpon>BillingItemValidaiton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDefinitions\InterestSettingValidaiton.cs">
+      <DependentUpon>ComputationSettingValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDefinitions\LateChargeSettingValidation.cs">
+      <DependentUpon>ComputationSettingValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDefinitions\MoneyValidation.cs" />
+    <Compile Include="EntityDefinitions\OverlimitFeeSettingValidation.cs">
+      <DependentUpon>ComputationSettingValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDefinitions\PaymentValidation.cs" />
+    <Compile Include="EntityDefinitions\PersonValidation.cs" />
+    <Compile Include="EntityDefinitions\PurchaseBillingItemValidation.cs">
+      <DependentUpon>BillingItemValidaiton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDefinitions\PurchaseValidation.cs" />
+    <Compile Include="EntityDefinitions\ServiceFeeSettingValidation.cs">
+      <DependentUpon>ComputationSettingValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDefinitions\UserValidation.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\CustomValidatorMessages.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CCMS.Core\CCMS.Core.csproj">
+      <Project>{1C482295-95C7-4CE3-810A-9ADFEEF13A26}</Project>
+      <Name>CCMS.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

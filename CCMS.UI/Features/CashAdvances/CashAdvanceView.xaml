@@ -1,0 +1,65 @@
+﻿<Window x:Class="CCMS.UI.Features.CashAdvances.CashAdvanceView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:common="clr-namespace:CCMS.UI.Common"
+        common:DailogHelper.DialogResult="{Binding Path=ActionResult}"
+        Title="Purchase" MinWidth="300" 
+        Style="{StaticResource ChildWindowStyle}"
+        WindowStartupLocation="CenterOwner"
+        SizeToContent="WidthAndHeight">
+    <HeaderedContentControl Style="{StaticResource SectionStyle}" Header="Cash Advance">
+        <StackPanel Height="Auto" Width="Auto" Margin="5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Style="{StaticResource LabelStyle}" Grid.Row="0" Grid.Column="0" Content="Date:"/>
+                <DatePicker Style="{StaticResource FieldStyle}" Grid.Row="0" Grid.Column="1"
+                        Text="{Binding Path=Date, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+
+                             <Label Style="{StaticResource LabelStyle}" Grid.Row="1" Grid.Column="0" Content="Details:"/>
+                <TextBox Style="{StaticResource FieldStyle}" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap"
+                     VerticalScrollBarVisibility="Visible" AcceptsReturn="True" Height="66"
+                     Text="{Binding Path=Details, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+
+                <Label Style="{StaticResource LabelStyle}" Grid.Row="2" Grid.Column="0" Content="Classification:"/>
+                <ComboBox Style="{StaticResource FieldStyle}" Grid.Row="2" Grid.Column="1"
+                          SelectedItem="{Binding Path=TransactionClassification, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
+                          ItemsSource="{Binding TransactionClassifications}"
+                          DisplayMemberPath="Value"
+                          SelectedValuePath="Key"/>
+
+                <Label Style="{StaticResource LabelStyle}" Grid.Row="3" Grid.Column="0" Content="Assigned To:"/>
+                <ComboBox Style="{StaticResource FieldStyle}" Grid.Row="3" Grid.Column="1"
+                          SelectedItem="{Binding Path=Staff, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
+                          ItemsSource="{Binding Staffs}"
+                          DisplayMemberPath="Value"
+                          SelectedValuePath="Key"/>
+
+                <Label Style="{StaticResource LabelStyle}" Grid.Row="4" Grid.Column="0" Content="Service Fee:"/>
+                <TextBox Style="{StaticResource FieldStyle}" Grid.Row="4" Grid.Column="1" TextAlignment="Right" 
+                     Text="{Binding Path=ServiceFee, StringFormat={}{0:N2}, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
+
+                <Label Style="{StaticResource LabelStyle}" Grid.Row="5" Grid.Column="0" Content="Amount:"/>
+                <TextBox Style="{StaticResource FieldStyle}" Grid.Row="5" Grid.Column="1" TextAlignment="Right" 
+                     Text="{Binding Path=Amount, StringFormat={}{0:N2}, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
+            </Grid>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Style="{StaticResource SubmitButtonStyle}" Content="Save" Command="{Binding Path=Save}" IsDefault="True"/>
+                <Button Style="{StaticResource SubmitButtonStyle}" Content="Cancel" IsCancel="True"/>
+            </StackPanel>
+        </StackPanel>
+    </HeaderedContentControl>
+</Window>

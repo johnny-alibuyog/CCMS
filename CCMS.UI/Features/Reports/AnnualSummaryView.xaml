@@ -1,0 +1,33 @@
+﻿<Window x:Class="CCMS.UI.Features.Reports.AnnualSummaryView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:viewer="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms" 
+        Title="Annual Summary Rerport"
+        WindowStartupLocation="CenterOwner"
+        WindowState="Maximized"
+        ShowInTaskbar="False">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="12,12,12,0" Orientation="Horizontal" >
+            <Label Style="{StaticResource LabelStyle}" Content="Year:" Padding="5,0,20,0" VerticalAlignment="Center" />
+            <TextBox Style="{StaticResource FieldStyle}" Text="{Binding Year}" Margin="5,0,50,0" TextAlignment="Right" Width="100" />
+
+            <Label Style="{StaticResource LabelStyle}" Content="Credit Card:" Margin="5,0,50,0" VerticalAlignment="Center" />
+            <ComboBox Style="{StaticResource FieldStyle}" Margin="5,0,50,0" 
+                      SelectedItem="{Binding Path=SelectedCreditCard, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
+                      ItemsSource="{Binding CreditCards}"
+                      DisplayMemberPath="Value"
+                      SelectedValuePath="Key"/>
+
+            <Button Style="{StaticResource SubmitButtonStyle}" Content="Generate" Command="{Binding Path=Generate}" IsDefault="True"/>
+        </StackPanel>
+        <WindowsFormsHost Grid.Row="1" Margin="12" Name="windowsFormsHost">
+            <viewer:ReportViewer x:Name="_reportViewer" />
+        </WindowsFormsHost>
+    </Grid>
+</Window>

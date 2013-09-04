@@ -1,0 +1,35 @@
+﻿<Window x:Class="CCMS.UI.Features.Users.AuthenticationView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:CCMS.UI.Features.Users"
+        xmlns:common="clr-namespace:CCMS.UI.Common"
+        common:DailogHelper.DialogResult="{Binding Path=ActionResult}"
+        Title="Authentication" MinWidth="300" 
+        Style="{StaticResource AuthenticationWindowStyle}"
+        WindowStartupLocation="CenterScreen"
+        ShowInTaskbar="True">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type local:LoginViewModel}">
+            <local:LoginView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:RegistrationViewModel}">
+            <local:RegistrationView/>
+        </DataTemplate>
+    </Window.Resources>
+
+    <HeaderedContentControl 
+        Style="{StaticResource SectionStyle}" 
+        Header="{Binding Path=HeaderDisplayText}">
+        <StackPanel>
+            <!-- toggle link -->
+            <ContentControl HorizontalAlignment="Right" Margin="5">
+                <Hyperlink Command="{Binding Path=Toggle}">
+                    <TextBlock Text="{Binding Path=ToggleDisplayText}" />
+                </Hyperlink>
+            </ContentControl>
+            
+            <!-- login/registration -->
+            <ContentControl Content="{Binding CurrentViewModel}"/>
+        </StackPanel>
+    </HeaderedContentControl>
+</Window>

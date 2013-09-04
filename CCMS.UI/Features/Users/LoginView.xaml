@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="CCMS.UI.Features.Users.LoginView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:common="clr-namespace:CCMS.UI.Common"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <StackPanel Height="Auto" Width="Auto" Margin="5">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Label Style="{StaticResource LabelStyle}" Grid.Row="0" Grid.Column="0" Content="Username:"/>
+            <TextBox Style="{StaticResource FieldStyle}" Grid.Row="0" Grid.Column="1"
+                     Text="{Binding Path=Username, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <Label Style="{StaticResource LabelStyle}" Grid.Row="1" Grid.Column="0" Content="Password:"/>
+            <PasswordBox common:PasswordHelper.Attach="True" Style="{StaticResource FieldStyle}" Grid.Row="1" Grid.Column="1"
+                     common:PasswordHelper.Password="{Binding Path=Password, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+        </Grid>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Style="{StaticResource SubmitButtonStyle}" Content="Login" IsDefault="True" Command="{Binding Path=Login}" />
+            <Button Style="{StaticResource SubmitButtonStyle}" Content="Cancel" IsCancel="True" />
+        </StackPanel>
+    </StackPanel>
+</UserControl>

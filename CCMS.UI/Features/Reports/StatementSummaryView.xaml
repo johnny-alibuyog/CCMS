@@ -1,0 +1,15 @@
+﻿<Window x:Class="CCMS.UI.Features.Reports.StatementSummaryView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:viewer="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms" 
+        Title="Statement Summary Rerport"
+        WindowStartupLocation="CenterOwner"
+        WindowState="Maximized"
+        ShowInTaskbar="False">
+    
+    <Grid>
+        <WindowsFormsHost Margin="12" Name="windowsFormsHost">
+            <viewer:ReportViewer x:Name="_reportViewer" />
+        </WindowsFormsHost>
+    </Grid>
+</Window>

@@ -1,0 +1,179 @@
+﻿<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:k="clr-namespace:CCMS.UI.Common.Converters"
+    xmlns:b="clr-namespace:CCMS.UI.Common.Behaviours">
+
+    <LinearGradientBrush x:Key="BrushHeaderBackground" StartPoint="0.5,0" EndPoint="0.5,1">
+        <GradientStop Color="#66000088" Offset="0" />
+        <GradientStop Color="#BB000088" Offset="1" />
+    </LinearGradientBrush>
+
+    <!-- This style configures both of the main content areas in the main window. -->
+    <Style x:Key="SectionStyle" TargetType="{x:Type HeaderedContentControl}">
+        <Setter Property="HeaderTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Border 
+                        Background="{StaticResource BrushHeaderBackground}" 
+                        BorderBrush="LightGray" 
+                        BorderThickness="1" 
+                        CornerRadius="5" 
+                        Margin="4" 
+                        Padding="4" 
+                        SnapsToDevicePixels="True" >
+                        <TextBlock 
+                            FontSize="13"
+                            FontWeight="Bold"
+                            Foreground="White" 
+                            HorizontalAlignment="Center"  
+                            Text="{TemplateBinding Content}" />
+                    </Border>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <!-- This template ensures that content of a HeaderedContentControl fills the available vertical space. -->
+                <ControlTemplate TargetType="{x:Type HeaderedContentControl}">
+                    <DockPanel>
+                        <ContentPresenter 
+                            DockPanel.Dock="Top"
+                            ContentSource="Header" 
+                            ContentTemplate="{TemplateBinding HeaderTemplate}" />
+                        <ContentPresenter 
+                            ContentSource="Content" 
+                            ContentTemplate="{TemplateBinding ContentTemplate}" />
+                    </DockPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- This style ensures that the borders in the main window are consistent. -->
+    <Style x:Key="MainBorderStyle" TargetType="{x:Type Border}">
+        <Setter Property="Background" Value="WhiteSmoke" />
+        <Setter Property="BorderBrush" Value="LightGray" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="5" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+    </Style>
+    
+    <!-- window style -->
+    <Style x:Key="MainWindowStyle" TargetType="{x:Type Window}">
+        <Setter Property="SizeToContent" Value="Width" />
+        <Setter Property="MinWidth" Value="850" />
+        <Setter Property="MinHeight" Value="600" />
+        <Setter Property="Width" Value="850" />
+        <Setter Property="Height" Value="600" />
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="FontFamily" Value="Verdana" />
+    </Style>
+
+    <!-- child window style -->
+    <Style x:Key="ChildWindowStyle" TargetType="{x:Type Window}">
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="FontFamily" Value="Verdana" />
+        <Setter Property="WindowStyle" Value="None" />
+        <Setter Property="ShowInTaskbar" Value="False" />
+        <Setter Property="SizeToContent" Value="Width" />
+    </Style>
+
+    <!-- authentication window style -->
+    <Style x:Key="AuthenticationWindowStyle" TargetType="{x:Type Window}">
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="FontFamily" Value="Verdana" />
+        <Setter Property="WindowStyle" Value="None" />
+        <Setter Property="SizeToContent" Value="WidthAndHeight" />
+    </Style>
+    
+    <!-- editor label style -->
+    <Style x:Key="LabelStyle" TargetType="{x:Type Control}">
+        <Setter Property="Margin" Value="1" />
+        <Setter Property="Padding" Value="1" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <!--<Setter Property="HorizontalAlignment" Value="Right" />-->
+    </Style>
+
+    <k:ValidationErrorsToStringConverter x:Key="ValidationErrorsConverter"/>
+
+    <!-- editor input styel -->
+    <Style x:Key="FieldStyle" TargetType="{x:Type Control}">
+        <Setter Property="Margin" Value="1" />
+        <Setter Property="Padding" Value="2" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Validation.ErrorTemplate">
+            <Setter.Value>
+                <ControlTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Border BorderBrush="Red" BorderThickness="1">
+                            <AdornedElementPlaceholder/>
+                        </Border>
+                        <Image x:Name="ErrorIcon" Source="/Assets/Images/FieldError.png" Width="16" Height="16" Margin="4,0,0,0" />
+                    </StackPanel>
+                    <!--
+                    <DockPanel LastChildFill="True">
+                        <Image x:Name="ErrorIcon" Source="/Assets/Images/FieldError.png" DockPanel.Dock="Left" Width="16" Height="16" Margin="4,0,0,0" />
+                        <Border BorderBrush="Red" BorderThickness="1">
+                            <AdornedElementPlaceholder />
+                        </Border>
+                    </DockPanel>
+                    -->
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="Validation.HasError" Value="true">
+                <!--<Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"/>-->
+                <Setter Property="ToolTip" 
+                        Value="{Binding RelativeSource={RelativeSource Self}, 
+                        Path=(Validation.Errors), 
+                        Converter={StaticResource ResourceKey=ValidationErrorsConverter}}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!-- list viw item style -->
+    <!--<Style x:Key="ListViewItemStyle" TargetType="{x:Type ListViewItem}">-->
+    <Style TargetType="{x:Type ListViewItem}">
+        <!-- Stretch the content of each cell -->
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="ItemsControl.AlternationIndex" Value="1" />
+                    <Condition Property="IsSelected" Value="False" />
+                    <Condition Property="IsMouseOver" Value="False" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="#EEEEEEEE" />
+            </MultiTrigger>
+        </Style.Triggers>
+    </Style>
+    
+    <!-- submit button style -->
+    <Style x:Key="SubmitButtonStyle" TargetType="Control">
+        <Setter Property="Padding" Value="10,2,10,2"/>
+        <Setter Property="Margin" Value="10,3,10,3"/>
+    </Style>
+
+    <!-- date picker style -->
+    <!--<Style TargetType="DatePicker" BasedOn="{StaticResource {x:Type DatePicker}}">
+        <Setter Property="b:DatePickerWatermarkBehaviour.Watermark" Value="Please select a date:"/>
+    </Style>-->
+
+    <Style TargetType="{x:Type DatePickerTextBox}">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <TextBox x:Name="PART_TextBox" Text="{Binding 
+                        Path=SelectedDate, 
+                        StringFormat='yyyy-MM-dd', 
+                        RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <!--<Setter Property="b:DatePickerWatermarkBehaviour.Watermark" Value="Select a date" />-->
+    </Style>
+
+</ResourceDictionary>

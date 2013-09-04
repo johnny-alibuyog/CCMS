@@ -1,0 +1,4 @@
+
+1.Add a using statement ("using Xceed.Wpf.Toolkit;") to the top of .cs files
+2.Add a new xmlns (xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit") to the top of XAML files
+3.Remember to use the namespace prefix (in the above example, <xctk: ...>) in the body of your XAML

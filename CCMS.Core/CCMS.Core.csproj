@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1C482295-95C7-4CE3-810A-9ADFEEF13A26}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CCMS.Core</RootNamespace>
+    <AssemblyName>CCMS.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\Exceptions\BusinessException.cs" />
+    <Compile Include="Common\Extentions\MoneyExtention.cs" />
+    <Compile Include="Common\RandomCreditCardNumberGenerator.cs" />
+    <Compile Include="Entities\Adjustment.cs" />
+    <Compile Include="Entities\AdjustmentBillingItem.cs">
+      <DependentUpon>BillingItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Audit.cs" />
+    <Compile Include="Entities\Billing.cs" />
+    <Compile Include="Entities\BillingItem.cs" />
+    <Compile Include="Entities\BillingStatus.cs" />
+    <Compile Include="Entities\CashAdvance.cs" />
+    <Compile Include="Entities\CashAdvanceBillingItem.cs">
+      <DependentUpon>BillingItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ChargeBillingItem.cs">
+      <DependentUpon>BillingItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MinimumPaymentSetting.cs">
+      <DependentUpon>ComputationSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TransactionClassification.cs" />
+    <Compile Include="Entities\ComputationSetting.cs" />
+    <Compile Include="Entities\CreditCard.cs" />
+    <Compile Include="Entities\CreditCardProvider.cs" />
+    <Compile Include="Entities\Currency.cs" />
+    <Compile Include="Entities\FeeBillingItem.cs">
+      <DependentUpon>BillingItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\FinanceChargeSetting.cs">
+      <DependentUpon>ComputationSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Installment.cs" />
+    <Compile Include="Entities\InstallmentBillingItem.cs">
+      <DependentUpon>BillingItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\InterestBillingItem.cs">
+      <DependentUpon>BillingItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\InterestSetting.cs">
+      <DependentUpon>ComputationSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\LateChargeSetting.cs">
+      <DependentUpon>ComputationSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Money.cs" />
+    <Compile Include="Entities\OverlimitFeeSetting.cs">
+      <DependentUpon>ComputationSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Payment.cs" />
+    <Compile Include="Entities\Person.cs" />
+    <Compile Include="Entities\Purchase.cs" />
+    <Compile Include="Entities\PurchaseBillingItem.cs">
+      <DependentUpon>BillingItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ServiceFeeSetting.cs">
+      <DependentUpon>ComputationSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Staff.cs" />
+    <Compile Include="Entities\User.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ComputationService.cs" />
+    <Compile Include="Services\IComputationService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Entities\ClassDiagram1.cd" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

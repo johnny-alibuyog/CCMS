@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CCMS.Core.Entities.Billing">
+    <Position X="8.25" Y="2.25" Width="2" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>IgACAAAQBIAAIDIAgQBEAAAgDAIAAIAAAEAggEMIAiA=</HashCode>
+      <FileName>Entities\Billing.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="BillingItems" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="CCMS.Core.Entities.BillingItem">
+    <Position X="11.75" Y="2.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>IAACgAAAAIABIAAAhABAAACQAAAAgICBAABgAAIAAiA=</HashCode>
+      <FileName>Entities\BillingItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CCMS.Core.Entities.Payment">
+    <Position X="1.75" Y="2.25" Width="2" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>IAACAAAABIAEIIAAhQBAAECIACAAAIBBgABgAAIAIiA=</HashCode>
+      <FileName>Entities\Payment.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="PaymentItems" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="CCMS.Core.Entities.PaymentItem">
+    <Position X="5.25" Y="2.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>IAACAAAAAAAAAAAAgIJAAACQAAAAAIAAAABgAAAAAiA=</HashCode>
+      <FileName>Entities\PaymentItem.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Billing" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="CCMS.UI.Features.Navigations.NavigationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <!-- navigation items -->
+        <ItemsControl ItemsSource="{Binding Path=Items}" IsTabStop="False" Margin="6,2">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Margin="1" Padding="1" TextAlignment="Right">
+                        <Hyperlink Command="{Binding Path=SelectItem}" >
+                            <TextBlock Text="{Binding Path=CreditCard}"/>
+                        </Hyperlink>
+                    </TextBlock>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </ScrollViewer>
+</UserControl>

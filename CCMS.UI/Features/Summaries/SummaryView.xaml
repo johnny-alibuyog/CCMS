@@ -1,0 +1,100 @@
+﻿<UserControl x:Class="CCMS.UI.Features.Summaries.SummaryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300">
+    
+    <StackPanel Height="Auto" Width="Auto">
+        <Grid Margin="6,2">
+            <!--<Grid.Resources>
+                <Style TargetType="{x:Type Label}">
+                    <Setter Property="Margin" Value="1" />
+                    <Setter Property="Padding" Value="1" />
+                </Style>
+            </Grid.Resources>-->
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Label Style="{StaticResource LabelStyle}" Grid.Row="0" Grid.Column="0" Content="Previous Balance" />
+            <Label Style="{StaticResource LabelStyle}" Grid.Row="0" Grid.Column="1" Content="[+]" />
+            <Label Style="{StaticResource FieldStyle}" Grid.Row="0" Grid.Column="2" Content="{Binding Path=PreviousBalance}" 
+                   ContentStringFormat="N2" HorizontalAlignment="Right" />
+
+            <Label Style="{StaticResource LabelStyle}" Grid.Row="1" Grid.Column="0" Content="Payments/Credits" />
+            <Label Style="{StaticResource LabelStyle}" Grid.Row="1" Grid.Column="1" Content="[-]" />
+            <Label Style="{StaticResource FieldStyle}" Grid.Row="1" Grid.Column="2" Content="{Binding Path=PaymentsCredits}" 
+                   ContentStringFormat="N2" HorizontalAlignment="Right" />
+
+            <Label Style="{StaticResource LabelStyle}" Grid.Row="2" Grid.Column="0" Content="Purchases/Installments" />
+            <Label Style="{StaticResource LabelStyle}" Grid.Row="2" Grid.Column="1" Content="[+]" />
+            <Label Style="{StaticResource FieldStyle}" Grid.Row="2" Grid.Column="2" Content="{Binding Path=PurchasesInstallments}" 
+                   ContentStringFormat="N2" HorizontalAlignment="Right" />
+
+            <Label Style="{StaticResource LabelStyle}" Grid.Row="3" Grid.Column="0" Content="Cash Advances" />
+            <Label Style="{StaticResource LabelStyle}" Grid.Row="3" Grid.Column="1" Content="[+]" />
+            <Label Style="{StaticResource FieldStyle}" Grid.Row="3" Grid.Column="2" Content="{Binding Path=CashAdvances}" 
+                   ContentStringFormat="N2" HorizontalAlignment="Right" />
+
+            <Label Style="{StaticResource LabelStyle}" Grid.Row="4" Grid.Column="0" Content="Interests/Fees/Charges" />
+            <Label Style="{StaticResource LabelStyle}" Grid.Row="4" Grid.Column="1" Content="[+]" />
+            <Label Style="{StaticResource FieldStyle}" Grid.Row="4" Grid.Column="2" Content="{Binding Path=InterestsFeesCharges}" 
+                   ContentStringFormat="N2" HorizontalAlignment="Right" />
+
+            <Label Style="{StaticResource LabelStyle}" Grid.Row="5" Grid.Column="0" Content="Adjustments" />
+            <Label Style="{StaticResource LabelStyle}" Grid.Row="5" Grid.Column="1" Content="[=]" />
+            <Label Style="{StaticResource FieldStyle}" Grid.Row="5" Grid.Column="2" Content="{Binding Path=Adjustments}" 
+                   ContentStringFormat="N2" HorizontalAlignment="Right" />
+
+            <Label Style="{StaticResource LabelStyle}" Grid.Row="6" Grid.Column="0" Content="Total Amount Due" />
+            <Label Style="{StaticResource LabelStyle}" Grid.Row="6" Grid.Column="1" Content="[=]" />
+            <Label Style="{StaticResource FieldStyle}" Grid.Row="6" Grid.Column="2" Content="{Binding Path=TotalAmountDue}" 
+                   ContentStringFormat="N2" HorizontalAlignment="Right" />
+
+            <Label Style="{StaticResource LabelStyle}" Grid.Row="8" Grid.Column="0" Content="Statement Period" />
+            <!--
+            <Label Grid.Row="6" Grid.Column="1" HorizontalAlignment="Right">[=]</Label>
+            <Label Grid.Row="6" Grid.Column="2" HorizontalAlignment="Right" 
+                   Content="{Binding Path=StatementPeriod}"></Label>
+            -->
+            
+            <StackPanel Grid.Row="9" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Style="{StaticResource LabelStyle}" Grid.Row="0" Grid.Column="0" Content="From:" />
+                    <Label Style="{StaticResource FieldStyle}" Grid.Row="0" Grid.Column="1" Content="{Binding Path=StatementPeriodFrom}" 
+                           ContentStringFormat="yyyy-MM-dd"/>
+
+                    <Label Style="{StaticResource LabelStyle}" Grid.Row="1" Grid.Column="0" Content="To:" />
+                    <Label Style="{StaticResource FieldStyle}" Grid.Row="1" Grid.Column="1" Content="{Binding Path=StatementPeriodTo}" 
+                           ContentStringFormat="yyyy-MM-dd"/>
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </StackPanel>
+</UserControl>
