@@ -52,7 +52,7 @@ namespace CCMS.UI.Features.Users
 
                 if (user == null)
                 {
-                    this.MessageBox.ShowInformation("Invalid login credentials.", "Login");
+                    this.MessageBox.Inform("Invalid login credentials.", "Login");
                     return null;
                 }
 
@@ -63,7 +63,7 @@ namespace CCMS.UI.Features.Users
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
                 this.ViewModel.Close(result: false);
             }
 

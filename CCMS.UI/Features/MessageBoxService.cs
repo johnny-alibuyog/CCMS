@@ -12,8 +12,20 @@ namespace CCMS.UI.Features
     {
         private static readonly ILog _log = LogManager.GetCurrentClassLogger(); //log4net.LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-        private MessageBoxResult ResovleResult(System.Windows.MessageBoxResult result)
+        public void Warn(string message, string caption = "Error")
         {
+            MessageBox.Show(message, caption, MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
+        public void Warn(string message, Exception ex, string caption = "Error")
+        {
+            _log.Error(message, ex);
+            this.Warn(message, caption);
+        }
+
+        public MessageBoxResult Confirm(string message, string caption = "Confirmation")
+        {
+            var result = MessageBox.Show(message, caption, MessageBoxButton.OKCancel, MessageBoxImage.Question);
             switch (result)
             {
                 case System.Windows.MessageBoxResult.OK:
@@ -24,25 +36,9 @@ namespace CCMS.UI.Features
             }
         }
 
-        public MessageBoxResult ShowError(string message, string caption = "Error")
+        public void Inform(string message, string caption = "Information")
         {
-            return ResovleResult(MessageBox.Show(message, caption, MessageBoxButton.OK, MessageBoxImage.Error));
-        }
-
-        public MessageBoxResult ShowError(string message, Exception ex, string caption = "Error")
-        {
-            _log.Error(message, ex);
-            return this.ShowError(message, caption);
-        }
-
-        public MessageBoxResult ShowQuestion(string message, string caption = "Confirmation")
-        {
-            return ResovleResult(MessageBox.Show(message, caption, MessageBoxButton.OKCancel, MessageBoxImage.Question));
-        }
-
-        public MessageBoxResult ShowInformation(string message, string caption = "Information")
-        {
-            return ResovleResult(MessageBox.Show(message, caption, MessageBoxButton.OK, MessageBoxImage.Information));
+            MessageBox.Show(message, caption, MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
     }

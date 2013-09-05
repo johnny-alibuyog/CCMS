@@ -44,7 +44,7 @@ namespace CCMS.UI.Features.Staffs
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
         }
 
@@ -53,7 +53,7 @@ namespace CCMS.UI.Features.Staffs
             try
             {
                 var message = string.Format("Do you want to save Staff?");
-                var result = this.MessageBox.ShowQuestion(message);
+                var result = this.MessageBox.Confirm(message);
                 if (result != MessageBoxResult.OK)
                     return;
 
@@ -78,7 +78,7 @@ namespace CCMS.UI.Features.Staffs
                     item.Id = staff.Id;
                 }
 
-                this.MessageBox.ShowInformation("Save has been successfully completed.");
+                this.MessageBox.Inform("Save has been successfully completed.");
 
                 this.ViewModel.Items.Insert(0, item);
                 this.ViewModel.SelectedItem = item;
@@ -88,7 +88,7 @@ namespace CCMS.UI.Features.Staffs
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
         }
 
@@ -107,7 +107,7 @@ namespace CCMS.UI.Features.Staffs
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
         }
 
@@ -116,7 +116,7 @@ namespace CCMS.UI.Features.Staffs
             try
             {
                 var message = string.Format("Do you want to save Staff?");
-                var result = this.MessageBox.ShowQuestion(message);
+                var result = this.MessageBox.Confirm(message);
                 if (result != MessageBoxResult.OK)
                     return;
 
@@ -135,7 +135,7 @@ namespace CCMS.UI.Features.Staffs
                     transaction.Commit();
                 }
 
-                this.MessageBox.ShowInformation("Save has been successfully completed.");
+                this.MessageBox.Inform("Save has been successfully completed.");
 
                 this.ViewModel.SelectedItem.HydrateWith(item);
                 this.ViewModel.AcceptChanges();
@@ -144,7 +144,7 @@ namespace CCMS.UI.Features.Staffs
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
         }
 
@@ -154,7 +154,7 @@ namespace CCMS.UI.Features.Staffs
             {
                 var item = this.ViewModel.Items.Single(x => x.Id == id);
                 var message = string.Format("Are you sure you want to delete staff: {0}?", item.Person.FullName);
-                var result = this.MessageBox.ShowQuestion(message);
+                var result = this.MessageBox.Confirm(message);
                 if (result != MessageBoxResult.OK)
                     return;
 
@@ -166,7 +166,7 @@ namespace CCMS.UI.Features.Staffs
                     transaction.Commit();
                 }
 
-                this.MessageBox.ShowInformation("Delete has been successfully completed.");
+                this.MessageBox.Inform("Delete has been successfully completed.");
 
                 this.ViewModel.Items.Remove(item);
                 this.ViewModel.SelectedItem = null;
@@ -174,7 +174,7 @@ namespace CCMS.UI.Features.Staffs
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
         }
 
@@ -265,7 +265,7 @@ namespace CCMS.UI.Features.Staffs
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
         }
     }

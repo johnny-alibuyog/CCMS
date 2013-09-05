@@ -59,7 +59,7 @@ namespace CCMS.UI.Features.Users
 
                     if (user == null)
                     {
-                        this.MessageBox.ShowInformation("Username already in use.", "Login");
+                        this.MessageBox.Inform("Username already in use.", "Login");
                         return null;
                     }
 
@@ -78,7 +78,7 @@ namespace CCMS.UI.Features.Users
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
                 this.ViewModel.Close(result: false);
             }
 

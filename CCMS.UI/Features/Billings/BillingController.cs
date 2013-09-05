@@ -64,7 +64,7 @@ namespace CCMS.UI.Features.Billings
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
         }
 
@@ -81,7 +81,7 @@ namespace CCMS.UI.Features.Billings
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
         }
 
@@ -98,7 +98,7 @@ namespace CCMS.UI.Features.Billings
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
         }
 
@@ -115,14 +115,14 @@ namespace CCMS.UI.Features.Billings
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
         }
 
         public virtual void Insert(BillingItemViewModel item)
         {
             var message = string.Format("Do you want to create {0}?", item.Type);
-            var result = this.MessageBox.ShowQuestion(message);
+            var result = this.MessageBox.Confirm(message);
             if (result != MessageBoxResult.OK)
                 return;
 
@@ -137,7 +137,7 @@ namespace CCMS.UI.Features.Billings
             try
             {
                 var message = string.Format("Are you sure you want to delete all billing item: {0}?", item.Details);
-                var result = this.MessageBox.ShowQuestion(message);
+                var result = this.MessageBox.Confirm(message);
                 if (result != MessageBoxResult.OK)
                     return;
 
@@ -146,7 +146,7 @@ namespace CCMS.UI.Features.Billings
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
         }
 
@@ -192,7 +192,7 @@ namespace CCMS.UI.Features.Billings
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
         }
 
@@ -201,7 +201,7 @@ namespace CCMS.UI.Features.Billings
             try
             {
                 var message = string.Format("Are you sure you want save billing?");
-                var result = this.MessageBox.ShowQuestion(message);
+                var result = this.MessageBox.Confirm(message);
                 if (result != MessageBoxResult.OK)
                     return;
 
@@ -240,11 +240,11 @@ namespace CCMS.UI.Features.Billings
                     //transaction.Commit();
                 }
 
-                this.MessageBox.ShowInformation("Save has been successfully completed.");
+                this.MessageBox.Inform("Save has been successfully completed.");
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
         }
 

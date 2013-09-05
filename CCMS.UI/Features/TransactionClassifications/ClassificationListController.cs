@@ -72,7 +72,7 @@ namespace CCMS.UI.Features.TransactionClassifications
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
         }
 
@@ -84,7 +84,7 @@ namespace CCMS.UI.Features.TransactionClassifications
                 if (exists)
                 {
                     var message = string.Format("Transaction classification {0} already exists.", this.ViewModel.NewItem);
-                    this.MessageBox.ShowInformation(message);
+                    this.MessageBox.Inform(message);
                     return;
                 }
 
@@ -95,7 +95,7 @@ namespace CCMS.UI.Features.TransactionClassifications
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
         }
 
@@ -109,7 +109,7 @@ namespace CCMS.UI.Features.TransactionClassifications
         {
             try
             {
-                var result = this.MessageBox.ShowQuestion("Do you want to save changes?", "Transaction Classification");
+                var result = this.MessageBox.Confirm("Do you want to save changes?", "Transaction Classification");
                 if (result != MessageBoxResult.OK)
                     return;
 
@@ -133,12 +133,12 @@ namespace CCMS.UI.Features.TransactionClassifications
                     transaction.Commit();
                 }
 
-                this.MessageBox.ShowInformation("Changes has been saved.", "Transaction Classification");
+                this.MessageBox.Inform("Changes has been saved.", "Transaction Classification");
                 this.ViewModel.Close();
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
         }
     }

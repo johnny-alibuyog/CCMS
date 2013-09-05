@@ -56,7 +56,7 @@ namespace CCMS.UI.Features.CashAdvances
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
         }
 
@@ -65,7 +65,7 @@ namespace CCMS.UI.Features.CashAdvances
             try
             {
                 var message = string.Format("Do you want to save Cash Advance?");
-                var result = this.MessageBox.ShowQuestion(message);
+                var result = this.MessageBox.Confirm(message);
                 if (result != MessageBoxResult.OK)
                     return;
 
@@ -134,7 +134,7 @@ namespace CCMS.UI.Features.CashAdvances
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
         }
 
@@ -144,7 +144,7 @@ namespace CCMS.UI.Features.CashAdvances
             {
                 var item = this.ViewModel.Items.Single(x => x.Id == id);
                 var message = string.Format("Are you sure you want to delete details: {0}?", item.Details);
-                var result = this.MessageBox.ShowQuestion(message);
+                var result = this.MessageBox.Confirm(message);
                 if (result != MessageBoxResult.OK)
                     return;
 
@@ -179,7 +179,7 @@ namespace CCMS.UI.Features.CashAdvances
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
         }
 
@@ -223,7 +223,7 @@ namespace CCMS.UI.Features.CashAdvances
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
         }
 
@@ -255,7 +255,7 @@ namespace CCMS.UI.Features.CashAdvances
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
         }
     }

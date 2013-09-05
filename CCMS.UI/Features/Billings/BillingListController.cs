@@ -63,7 +63,7 @@ namespace CCMS.UI.Features.Billings
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
         }
 
@@ -87,7 +87,7 @@ namespace CCMS.UI.Features.Billings
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
         }
 
@@ -96,7 +96,7 @@ namespace CCMS.UI.Features.Billings
             try
             {
                 var message = string.Format("Are you sure you want to delete all billings dated: {0}?", item.DateCoveredDisplay);
-                var result = this.MessageBox.ShowQuestion(message);
+                var result = this.MessageBox.Confirm(message);
                 if (result != MessageBoxResult.OK)
                     return;
 
@@ -114,7 +114,7 @@ namespace CCMS.UI.Features.Billings
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
         }
 

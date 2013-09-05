@@ -7,9 +7,9 @@ namespace CCMS.UI.Features
 {
     public interface IMessageBoxService
     {
-        MessageBoxResult ShowError(string message, string caption = "Error");
-        MessageBoxResult ShowError(string message, Exception ex, string caption = "Error");
-        MessageBoxResult ShowQuestion(string message, string caption = "Confirmation");
-        MessageBoxResult ShowInformation(string message, string caption = "Information");
+        void Warn(string message, string caption = "Error");
+        void Warn(string message, Exception ex, string caption = "Error");
+        MessageBoxResult Confirm(string message, string caption = "Confirmation");
+        void Inform(string message, string caption = "Information");
     }
 }

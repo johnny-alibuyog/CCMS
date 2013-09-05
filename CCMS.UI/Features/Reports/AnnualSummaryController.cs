@@ -51,7 +51,7 @@ namespace CCMS.UI.Features.Reports
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
         }
 
@@ -98,7 +98,7 @@ namespace CCMS.UI.Features.Reports
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
         }
     }

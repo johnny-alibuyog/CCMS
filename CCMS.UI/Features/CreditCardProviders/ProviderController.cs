@@ -258,7 +258,7 @@ namespace CCMS.UI.Features.CreditCardProviders
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
         }
 
@@ -275,7 +275,7 @@ namespace CCMS.UI.Features.CreditCardProviders
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
         }
 
@@ -292,7 +292,7 @@ namespace CCMS.UI.Features.CreditCardProviders
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
         }
 
@@ -309,7 +309,7 @@ namespace CCMS.UI.Features.CreditCardProviders
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
         }
 
@@ -326,7 +326,7 @@ namespace CCMS.UI.Features.CreditCardProviders
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
         }
 
@@ -343,7 +343,7 @@ namespace CCMS.UI.Features.CreditCardProviders
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
         }
 
@@ -360,7 +360,7 @@ namespace CCMS.UI.Features.CreditCardProviders
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
         }
 
@@ -369,7 +369,7 @@ namespace CCMS.UI.Features.CreditCardProviders
             try
             {
                 var message = string.Format("Do you want to save Computation Settings?");
-                var result = this.MessageBox.ShowQuestion(message);
+                var result = this.MessageBox.Confirm(message);
                 if (result != MessageBoxResult.OK)
                     return;
 
@@ -380,7 +380,7 @@ namespace CCMS.UI.Features.CreditCardProviders
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
         }
 
@@ -400,7 +400,7 @@ namespace CCMS.UI.Features.CreditCardProviders
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
         }
 
@@ -409,7 +409,7 @@ namespace CCMS.UI.Features.CreditCardProviders
             try
             {
                 var message = string.Format("Do you want to save Computation Settings?");
-                var result = this.MessageBox.ShowQuestion(message);
+                var result = this.MessageBox.Confirm(message);
                 if (result != MessageBoxResult.OK)
                     return;
 
@@ -418,7 +418,7 @@ namespace CCMS.UI.Features.CreditCardProviders
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
         }
 
@@ -427,7 +427,7 @@ namespace CCMS.UI.Features.CreditCardProviders
             try
             {
                 var message = string.Format("Are you sure you want to delete all item: {0}?", item.MinimumAmountCurrency.Value);
-                var result = this.MessageBox.ShowQuestion(message);
+                var result = this.MessageBox.Confirm(message);
                 if (result != MessageBoxResult.OK)
                     return;
 
@@ -436,7 +436,7 @@ namespace CCMS.UI.Features.CreditCardProviders
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
         }
 
@@ -445,7 +445,7 @@ namespace CCMS.UI.Features.CreditCardProviders
             try
             {
                 var message = "Are you sure you want to save all changes?";
-                var result = this.MessageBox.ShowQuestion(message);
+                var result = this.MessageBox.Confirm(message);
                 if (result != MessageBoxResult.OK)
                     return;
 
@@ -468,13 +468,13 @@ namespace CCMS.UI.Features.CreditCardProviders
                     this.SessionProvider.ReleaseSharedSession();
                 }
 
-                this.MessageBox.ShowInformation("Changes has been saved?");
+                this.MessageBox.Inform("Changes has been saved?");
 
                 this.ViewModel.AcceptChanges();
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
 
         }

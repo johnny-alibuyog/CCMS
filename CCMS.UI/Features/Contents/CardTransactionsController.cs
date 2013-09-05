@@ -256,7 +256,7 @@ namespace CCMS.UI.Features.Billings
             }
             catch (Exception ex)
             {
-                this.MessageBox.ShowError(ex.Message, ex);
+                this.MessageBox.Warn(ex.Message, ex);
             }
         }
     }
