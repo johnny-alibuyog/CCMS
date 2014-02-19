@@ -13,7 +13,7 @@ namespace CCMS.Data.EntityDefinitions
         {
             Define(x => x.Id)
                 .NotNullableAndNotEmpty()
-                .And.MaxLength(3);
+                .And.MaxLength(5);
 
             Define(x => x.Name)
                 .NotNullableAndNotEmpty()

@@ -81,6 +81,7 @@ namespace CCMS.UI.Features.Reports
                             TotalExpenses = x.BillingAmount.GetValue(),
                             TotalPayments = x.PaymentAmount.GetValue() + x.PreviousBillingAmount.GetValue()
                         })
+                        .OrderBy(x => x.StatementDate)
                         .ToList();
 
 

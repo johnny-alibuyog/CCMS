@@ -72,6 +72,8 @@ namespace CCMS.UI.Features.Reports
                         item.Provider = group.Key.CreditCard.Provider.Name;
                         item.Currency = group.Key.TransactionCurrency.Name;
 
+                        item.CreditLimit = group.Key.CreditCard.CreditLimit.GetValue();
+                        item.AvailableCredit = group.Key.CreditCard.AvailableCredit.GetValue();
                         item.PreviousBalance = currentBilling.PreviousBillingAmount.GetValue();
                         item.PaymentsCredits = currentBilling.GetPaymentsAndCredits().GetValue();
 

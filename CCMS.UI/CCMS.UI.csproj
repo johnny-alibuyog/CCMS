@@ -161,7 +161,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Common\Behaviours\DatePickerWatermarkBehaviour.cs" />
-    <Compile Include="Common\Extentions\ViewModelExtention.cs" />
     <Compile Include="Features\AppController.cs" />
     <Compile Include="Features\AppViewModel.cs" />
     <Compile Include="Bootstrappers\DataInitializers\DataBootstrapper.cs" />

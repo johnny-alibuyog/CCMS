@@ -17,6 +17,10 @@ namespace CCMS.UI.Features.Reports
 
         public virtual string AccountNumber { get; set; }
 
+        public virtual decimal CreditLimit { get; set; }
+
+        public virtual decimal AvailableCredit { get; set; }
+
         public virtual decimal PreviousBalance { get; set; }
 
         public virtual decimal PaymentsCredits { get; set; }

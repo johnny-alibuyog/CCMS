@@ -17,6 +17,7 @@ using CCMS.UI.Features.CreditCards;
 using CCMS.UI.Features.Navigations;
 using CCMS.UI.Features.SplashScreens;
 using CCMS.UI.Features.Users;
+using CCMS.UI.Properties;
 using ReactiveUI;
 using ReactiveUI.Xaml;
 
@@ -29,28 +30,16 @@ namespace CCMS.UI
     {
         #region Global Variables
 
-        private static AppViewModel _data;
+        private static AppViewModel _data = new AppViewModel();
 
         public static AppViewModel Data
         {
-            get 
-            {
-                if (_data == null)
-                    _data = new AppViewModel();
-
-                return _data; 
-            }
+            get { return _data; }
         }
 
         public static Window CurrentWindow
         {
-            get
-            {
-                return Application.Current.Windows
-                    .OfType<Window>()
-                    .Where(x => x.IsActive)
-                    .SingleOrDefault();
-            }
+            get { return Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive); }
         }
 
         #endregion
@@ -99,12 +88,16 @@ namespace CCMS.UI
         {
             this.ShutdownMode = ShutdownMode.OnExplicitShutdown;
 
-            TestData.GenerateUser(persistOnCall: true);
+            if (Settings.Default.UseDummyAccount)
+                TestData.GenerateUser(persistOnCall: true);
 
             // authentication (login / registration)
             var authDialog = IoC.Container.Resolve<AuthenticationDialogService>();
-            authDialog.ViewModel.Login.Username = "johnny.alibuyog";
-            authDialog.ViewModel.Login.Password = "slow_dance";
+            if (Settings.Default.UseDummyAccount)
+            {
+                authDialog.ViewModel.Login.Username = "johnny.alibuyog";
+                authDialog.ViewModel.Login.Password = "slow_dance";
+            }
             authDialog.ShowModal();
             var actionResult = authDialog.ViewModel.ActionResult;
             if (actionResult == null || actionResult.Value == false)
@@ -123,7 +116,8 @@ namespace CCMS.UI
             Task.Factory.StartNew(() =>
             {
                 // generate data
-                TestData.GenerateData();
+                if (Settings.Default.GenerateDummyData)
+                    TestData.GenerateData();
             })
             .ContinueWith(task =>
             {

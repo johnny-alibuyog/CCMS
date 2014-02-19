@@ -111,6 +111,11 @@ namespace CCMS.UI.Features
             this.IsValid = (invalidValues.Count() == 0);
         }
 
+        public virtual IObservable<bool> IsValidObservable()
+        {
+            return this.WhenAny(x => x.IsValid, x => x.Value == true);
+        }
+
         #endregion
 
         #region IChangeTracking Members

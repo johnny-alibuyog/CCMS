@@ -25,10 +25,9 @@ namespace CCMS.UI.Features
 
         public MessageBoxResult Confirm(string message, string caption = "Confirmation")
         {
-            var result = MessageBox.Show(message, caption, MessageBoxButton.OKCancel, MessageBoxImage.Question);
+            var result = MessageBox.Show(message, caption, MessageBoxButton.YesNo, MessageBoxImage.Question);
             switch (result)
             {
-                case System.Windows.MessageBoxResult.OK:
                 case System.Windows.MessageBoxResult.Yes:
                     return MessageBoxResult.OK;
                 default:

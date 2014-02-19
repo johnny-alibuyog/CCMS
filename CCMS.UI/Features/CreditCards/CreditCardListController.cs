@@ -41,17 +41,6 @@ namespace CCMS.UI.Features.CreditCards
                 dialog.ViewModel.Save = new ReactiveCommand(dialog.ViewModel.IsValidObservable());
                 dialog.ViewModel.Save.Subscribe(x => this.Insert(dialog.ViewModel));
                 dialog.ShowModal(this, "Create Credit Card");
-
-                //var item = dialog.ShowModal(this, "Create Credit Card");
-                //if (item != null)
-                //{
-                //    if (this.Insert(item))
-                //    {
-                //        this.ViewModel.Items.Insert(0, item);
-                //        this.ViewModel.SelectedItem = item;
-                //        this.ViewModel.AcceptChanges();
-                //    }
-                //}
             }
             catch (Exception ex)
             {
@@ -135,18 +124,6 @@ namespace CCMS.UI.Features.CreditCards
                 dialog.ViewModel.Save = new ReactiveCommand(dialog.ViewModel.IsValidObservable());
                 dialog.ViewModel.Save.Subscribe(x => Update(dialog.ViewModel));
                 dialog.ShowModal(this, "Edit Credit Card");
-
-                //var value = dialog.ShowModal(this, "Edit Credit Card");
-                //if (value != null)
-                //{
-                //    if (this.Update(value))
-                //    {
-                //        item.HydrateWith(value);
-
-                //        this.ViewModel.SelectedItem = item;
-                //        this.ViewModel.AcceptChanges();
-                //    }
-                //}
             }
             catch (Exception ex)
             {

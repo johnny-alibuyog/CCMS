@@ -205,9 +205,9 @@ namespace CCMS.UI
                 {
                     User = user,
                     Person = new Person(
-                        firstName: "Euphrates",
+                        firstName: "Vic",
                         middleName: "Agnes",
-                        lastName: "Efa"
+                        lastName: "Darchinian"
                     )
                 };
                 session.Save(staff);

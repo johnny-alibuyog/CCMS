@@ -2776,7 +2776,7 @@
 		<col def="I2">Encoded</col>
 		<col def="S0">Comment</col>
 		<col def="I4">TimeStamp</col>
-		<row><td>COMPANY_NAME</td><td>1033</td><td>Narasoft</td><td>0</td><td/><td>346102763</td></row>
+		<row><td>COMPANY_NAME</td><td>1033</td><td>Narasoft</td><td>0</td><td/><td>-2053042995</td></row>
 		<row><td>DN_AlwaysInstall</td><td>1033</td><td>Always Install</td><td>0</td><td/><td>-333352016</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_COLOR</td><td>1033</td><td>The color settings of your system are not adequate for running [ProductName].</td><td>0</td><td/><td>-333352016</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION45FULL</td><td>1033</td><td>Microsoft .NET Framework 4.5 Full package or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>-199149395</td></row>
@@ -3881,8 +3881,8 @@
 		<row><td>IDS__TargetReq_DESC_PROCESSOR</td><td>1033</td><td>The processor is not adequate for running [ProductName].</td><td>0</td><td/><td>-333352016</td></row>
 		<row><td>IDS__TargetReq_DESC_RAM</td><td>1033</td><td>The amount of RAM is not adequate for running [ProductName].</td><td>0</td><td/><td>-333352016</td></row>
 		<row><td>IDS__TargetReq_DESC_RESOLUTION</td><td>1033</td><td>The screen resolution is not adequate for running [ProductName].</td><td>0</td><td/><td>-333352016</td></row>
-		<row><td>ID_STRING1</td><td>1033</td><td>http://www.Narasoft.com</td><td>0</td><td/><td>346102763</td></row>
-		<row><td>ID_STRING2</td><td>1033</td><td>Narasoft</td><td>0</td><td/><td>346102763</td></row>
+		<row><td>ID_STRING1</td><td>1033</td><td>http://www.Narasoft.com</td><td>0</td><td/><td>-2053042995</td></row>
+		<row><td>ID_STRING2</td><td>1033</td><td>Narasoft</td><td>0</td><td/><td>-2053042995</td></row>
 		<row><td>ID_STRING3</td><td>1033</td><td>Launch |Built</td><td>0</td><td/><td>-333324976</td></row>
 		<row><td>ID_STRING4</td><td>1033</td><td>Launch |Built</td><td>0</td><td/><td>-333329962</td></row>
 		<row><td>ID_STRING5</td><td>1033</td><td>CREDIT~1|Credit Card Management System</td><td>0</td><td/><td>-333356745</td></row>
@@ -4136,7 +4136,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ISTheme</td><td>InstallShield Blue.theme</td></row>
 		<row><td>ISUSLock</td><td>{436CAF2E-5A55-40A3-89E3-6DCF08CFF8ED}</td></row>
 		<row><td>ISUSSignature</td><td>{5DC502FC-9022-4C73-B9FA-9BAD908EBF26}</td></row>
-		<row><td>ISVisitedViews</td><td>viewAssistant,viewObjects,viewISToday,viewShortcuts,viewAppFiles,viewSetupDesign,viewProject,viewSystemSearch,viewRealSetupDesign,viewSetupTypes,viewUpgradePaths,viewUpdateService,viewFeatureFiles,viewDependencies,viewCE,viewDesignPatches,viewRelease,viewAppV</td></row>
+		<row><td>ISVisitedViews</td><td>viewAssistant,viewObjects,viewISToday,viewShortcuts,viewAppFiles,viewSetupDesign,viewProject,viewSystemSearch,viewRealSetupDesign,viewSetupTypes,viewUpgradePaths,viewUpdateService,viewFeatureFiles,viewDependencies,viewCE,viewDesignPatches,viewRelease,viewAppV,viewUI,viewBillboards,viewTextMessages,viewEnvironmentVariables</td></row>
 		<row><td>Limited</td><td>1</td></row>
 		<row><td>LockPermissionMode</td><td>1</td></row>
 		<row><td>MsiExecCmdLineOptions</td><td/></row>

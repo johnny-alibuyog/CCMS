@@ -89,6 +89,7 @@ namespace CCMS.UI.Features.Reports
                             Adjustments = x.AdjustmentAmount.Value,
                             Balance = x.SettlementBalance.Value
                         })
+                        .OrderBy(x => x.StatementDate)
                         .ToList();
 
                     transaction.Commit();
