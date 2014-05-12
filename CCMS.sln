@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCMS.UI", "CCMS.UI\CCMS.UI.csproj", "{51772025-15E3-455B-80E3-3DFE225888C9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCMS.Data", "CCMS.Data\CCMS.Data.csproj", "{F9703240-163C-4CA4-9679-E348688DE300}"
@@ -21,11 +23,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".notes", ".notes", "{733AD9
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCMS.Core", "CCMS.Core\CCMS.Core.csproj", "{1C482295-95C7-4CE3-810A-9ADFEEF13A26}"
-EndProject
-Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "CCMS.Setup", "CCMS.Setup\CCMS.Setup.isproj", "{EC78A73B-7114-41F9-880C-B7AE0F5F44D3}"
-	ProjectSection(ProjectDependencies) = postProject
-		{51772025-15E3-455B-80E3-3DFE225888C9} = {51772025-15E3-455B-80E3-3DFE225888C9}
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -124,35 +121,6 @@ Global
 		{1C482295-95C7-4CE3-810A-9ADFEEF13A26}.SingleImage|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{1C482295-95C7-4CE3-810A-9ADFEEF13A26}.SingleImage|Mixed Platforms.Build.0 = Release|Any CPU
 		{1C482295-95C7-4CE3-810A-9ADFEEF13A26}.SingleImage|x86.ActiveCfg = Release|Any CPU
-		{EC78A73B-7114-41F9-880C-B7AE0F5F44D3}.CD_ROM|Any CPU.ActiveCfg = CD_ROM
-		{EC78A73B-7114-41F9-880C-B7AE0F5F44D3}.CD_ROM|Any CPU.Build.0 = CD_ROM
-		{EC78A73B-7114-41F9-880C-B7AE0F5F44D3}.CD_ROM|Mixed Platforms.ActiveCfg = CD_ROM
-		{EC78A73B-7114-41F9-880C-B7AE0F5F44D3}.CD_ROM|Mixed Platforms.Build.0 = CD_ROM
-		{EC78A73B-7114-41F9-880C-B7AE0F5F44D3}.CD_ROM|x86.ActiveCfg = CD_ROM
-		{EC78A73B-7114-41F9-880C-B7AE0F5F44D3}.CD_ROM|x86.Build.0 = CD_ROM
-		{EC78A73B-7114-41F9-880C-B7AE0F5F44D3}.Debug|Any CPU.ActiveCfg = DVD-5
-		{EC78A73B-7114-41F9-880C-B7AE0F5F44D3}.Debug|Any CPU.Build.0 = DVD-5
-		{EC78A73B-7114-41F9-880C-B7AE0F5F44D3}.Debug|Mixed Platforms.ActiveCfg = DVD-5
-		{EC78A73B-7114-41F9-880C-B7AE0F5F44D3}.Debug|Mixed Platforms.Build.0 = DVD-5
-		{EC78A73B-7114-41F9-880C-B7AE0F5F44D3}.Debug|x86.ActiveCfg = DVD-5
-		{EC78A73B-7114-41F9-880C-B7AE0F5F44D3}.Debug|x86.Build.0 = DVD-5
-		{EC78A73B-7114-41F9-880C-B7AE0F5F44D3}.DVD-5|Any CPU.ActiveCfg = DVD-5
-		{EC78A73B-7114-41F9-880C-B7AE0F5F44D3}.DVD-5|Any CPU.Build.0 = DVD-5
-		{EC78A73B-7114-41F9-880C-B7AE0F5F44D3}.DVD-5|Mixed Platforms.ActiveCfg = DVD-5
-		{EC78A73B-7114-41F9-880C-B7AE0F5F44D3}.DVD-5|Mixed Platforms.Build.0 = DVD-5
-		{EC78A73B-7114-41F9-880C-B7AE0F5F44D3}.DVD-5|x86.ActiveCfg = DVD-5
-		{EC78A73B-7114-41F9-880C-B7AE0F5F44D3}.DVD-5|x86.Build.0 = DVD-5
-		{EC78A73B-7114-41F9-880C-B7AE0F5F44D3}.Release|Any CPU.ActiveCfg = SingleImage
-		{EC78A73B-7114-41F9-880C-B7AE0F5F44D3}.Release|Mixed Platforms.ActiveCfg = SingleImage
-		{EC78A73B-7114-41F9-880C-B7AE0F5F44D3}.Release|Mixed Platforms.Build.0 = SingleImage
-		{EC78A73B-7114-41F9-880C-B7AE0F5F44D3}.Release|x86.ActiveCfg = SingleImage
-		{EC78A73B-7114-41F9-880C-B7AE0F5F44D3}.Release|x86.Build.0 = SingleImage
-		{EC78A73B-7114-41F9-880C-B7AE0F5F44D3}.SingleImage|Any CPU.ActiveCfg = SingleImage
-		{EC78A73B-7114-41F9-880C-B7AE0F5F44D3}.SingleImage|Any CPU.Build.0 = SingleImage
-		{EC78A73B-7114-41F9-880C-B7AE0F5F44D3}.SingleImage|Mixed Platforms.ActiveCfg = SingleImage
-		{EC78A73B-7114-41F9-880C-B7AE0F5F44D3}.SingleImage|Mixed Platforms.Build.0 = SingleImage
-		{EC78A73B-7114-41F9-880C-B7AE0F5F44D3}.SingleImage|x86.ActiveCfg = SingleImage
-		{EC78A73B-7114-41F9-880C-B7AE0F5F44D3}.SingleImage|x86.Build.0 = SingleImage
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
